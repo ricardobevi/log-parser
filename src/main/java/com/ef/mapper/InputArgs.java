@@ -17,14 +17,6 @@ public class InputArgs {
 	}
 
 
-	public InputArgs() {
-		this.accessLog = "";
-		this.startDate = "";
-		this.duration = "";
-		this.threshold = "";
-	}
-
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
