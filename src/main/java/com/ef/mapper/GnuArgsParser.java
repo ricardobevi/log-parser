@@ -23,7 +23,7 @@ public class GnuArgsParser implements ArgsParser {
 
 	public GnuArgsParser() {}
 
-	public InputArgs parse(String[] args){
+	public InputArgsDto parse(String[] args){
 
 		Options options = createOptions();
 
@@ -33,7 +33,7 @@ public class GnuArgsParser implements ArgsParser {
 			
 			CommandLine cmd = parser.parse( options, args);
 			
-			return new InputArgs(
+			return new InputArgsDto(
 					cmd.getOptionValue(ACCESS_LOG), 
 					cmd.getOptionValue(START_DATE), 
 					cmd.getOptionValue(DURATION), 

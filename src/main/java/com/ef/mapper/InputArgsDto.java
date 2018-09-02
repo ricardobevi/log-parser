@@ -1,6 +1,6 @@
 package com.ef.mapper;
 
-public class InputArgs {
+public class InputArgsDto {
 	
 	private final String accessLog;
 	private final String startDate;
@@ -9,12 +9,37 @@ public class InputArgs {
 	
 	
 	
-	public InputArgs(String accessLog, String startDate, String duration, String threshold) {
+	public InputArgsDto(String accessLog, String startDate, String duration, String threshold) {
 		this.accessLog = accessLog;
 		this.startDate = startDate;
 		this.duration = duration;
 		this.threshold = threshold;
 	}
+
+	
+
+	public String getAccessLog() {
+		return accessLog;
+	}
+
+
+
+	public String getStartDate() {
+		return startDate;
+	}
+
+
+
+	public String getDuration() {
+		return duration;
+	}
+
+
+
+	public String getThreshold() {
+		return threshold;
+	}
+
 
 
 	@Override
@@ -25,7 +50,7 @@ public class InputArgs {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		InputArgs other = (InputArgs) obj;
+		InputArgsDto other = (InputArgsDto) obj;
 		if (accessLog == null) {
 			if (other.accessLog != null)
 				return false;

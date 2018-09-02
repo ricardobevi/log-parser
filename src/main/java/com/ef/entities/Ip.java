@@ -8,6 +8,14 @@ public class Ip {
 		this.ip = ip;
 	}
 
+	
+	
+	
+	@Override
+	public String toString() {
+		return ip;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
