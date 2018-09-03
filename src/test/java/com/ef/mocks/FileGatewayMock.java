@@ -3,9 +3,9 @@ package com.ef.mocks;
 import java.util.Arrays;
 import java.util.List;
 
+import com.ef.entities.InputArgs;
 import com.ef.gateways.FileGateway;
 import com.ef.gateways.LogFileProcessor;
-import com.ef.mapper.InputArgsDto;
 
 public class FileGatewayMock implements FileGateway {
 
@@ -16,10 +16,8 @@ public class FileGatewayMock implements FileGateway {
 		this.logLines = Arrays.asList(sampleLogLines);
 	}
 
-	public void readLogLines(InputArgsDto inputArgsDto, LogFileProcessor logFileProcessor) {
-		
-		logFileProcessor.process(logLines.parallelStream());
-		
+	public void readLogLines(InputArgs inputArgs, LogFileProcessor logFileProcessor) {
+		logFileProcessor.process(logLines.parallelStream());		
 	}
 
 }

@@ -86,7 +86,7 @@ public class ArgsParserTest {
 		Assert.assertEquals(
 				"Missing required option: duration\n" + 
 				"\n" + 
-				"usage: parser.jar --accesslog <path> --duration <hourly,daily> --startDate <date> --threshold <int>\n" + 
+				"usage: parser.jar [--accesslog <path>] --duration <hourly,daily> --startDate <date> --threshold <int>\n" + 
 				"    --accesslog <path>          Path to the access.log file\n" + 
 				"    --duration <hourly,daily>   'hourly' or 'daily'\n" + 
 				"    --startDate <date>          Stating point to meassure in \"yyyy-MM-dd.HH:mm:ss\" format\n" + 
@@ -120,7 +120,7 @@ public class ArgsParserTest {
 		Assert.assertEquals(
 				"Missing required options: duration, threshold\n" + 
 				"\n" + 
-				"usage: parser.jar --accesslog <path> --duration <hourly,daily> --startDate <date> --threshold <int>\n" + 
+				"usage: parser.jar [--accesslog <path>] --duration <hourly,daily> --startDate <date> --threshold <int>\n" + 
 				"    --accesslog <path>          Path to the access.log file\n" + 
 				"    --duration <hourly,daily>   'hourly' or 'daily'\n" + 
 				"    --startDate <date>          Stating point to meassure in \"yyyy-MM-dd.HH:mm:ss\" format\n" + 

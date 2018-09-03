@@ -1,9 +1,9 @@
 package com.ef.gateways;
 
-import com.ef.mapper.InputArgsDto;
+import com.ef.entities.InputArgs;
 
 public interface FileGateway {
 
-	void readLogLines(InputArgsDto inputArgsDto, LogFileProcessor logFileProcessor);
+	void readLogLines(InputArgs inputArgs, LogFileProcessor logFileProcessor);
 
 }

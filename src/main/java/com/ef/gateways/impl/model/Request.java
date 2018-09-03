@@ -9,11 +9,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@SuppressWarnings("unused")
 public class Request {
 
 	@Id
 	@GeneratedValue
 	private Long id;
+	
 	
 	private String ip;
 	

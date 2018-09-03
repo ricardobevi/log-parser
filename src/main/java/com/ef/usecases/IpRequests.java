@@ -22,7 +22,7 @@ public class IpRequests {
 		
 		InputArgs inputArgs = new InputArgs(inputArgsDto);
 
-		fileGateway.readLogLines(inputArgsDto, new LogLinesSaver(this.databaseGateway));
+		fileGateway.readLogLines(inputArgs, new LogLinesSaver(this.databaseGateway));
 		
 		BlockedIps bloquedIps = this.databaseGateway.findBlockedIps(inputArgs);
 

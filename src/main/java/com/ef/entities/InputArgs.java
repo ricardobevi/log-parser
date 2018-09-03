@@ -15,7 +15,7 @@ import com.ef.mapper.InputArgsDto;
 
 public class InputArgs {
 	
-	private final String accessLog;
+	private final Optional<String> accessLog;
 	private final Date startDate;
 	private final TimePeriod timePeriod;
 	private final Integer threshold;
@@ -31,14 +31,14 @@ public class InputArgs {
 	
 
 	public InputArgs(String accessLog, Date startDate, TimePeriod timePeriod, Integer threshold) {
-		this.accessLog = accessLog;
+		this.accessLog = Optional.ofNullable(accessLog);
 		this.startDate = startDate;
 		this.timePeriod = timePeriod;
 		this.threshold = threshold;
 	}
 
 	public InputArgs(InputArgsDto inputArgsDto) {
-		this.accessLog = inputArgsDto.getAccessLog();
+		this.accessLog = Optional.ofNullable(inputArgsDto.getAccessLog());
 		
 		Date startDate = new Date();
 		
@@ -67,7 +67,7 @@ public class InputArgs {
 	
 	
 
-	public String getAccessLog() {
+	public Optional<String> getAccessLog() {
 		return accessLog;
 	}
 

@@ -6,29 +6,36 @@ import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import com.ef.entities.InputArgs;
 import com.ef.gateways.FileGateway;
 import com.ef.gateways.LogFileProcessor;
 import com.ef.gateways.impl.exceptions.AccessLogException;
-import com.ef.mapper.InputArgsDto;
 
 public class FileGatewayImpl implements FileGateway{
 
 	@Override
-	public void readLogLines(InputArgsDto inputArgsDto, LogFileProcessor logFileProcessor) {
+	public void readLogLines(InputArgs inputArgs, LogFileProcessor logFileProcessor) {
 		
 		try {
-
-			BufferedReader br = Files.newBufferedReader(Paths.get(inputArgsDto.getAccessLog()));
 			
-			logFileProcessor.process(br.lines());
+			inputArgs.getAccessLog().ifPresent( accessLog -> {
+				
+				try {
+					
+					BufferedReader br = Files.newBufferedReader(Paths.get(accessLog));
+					logFileProcessor.process(br.lines());
+					
+				} catch (IOException e) {
+					throw new AccessLogException(inputArgs.getAccessLog().orElse(""));
+				}
+				
+				
+			});
+
 			
 		} catch (UncheckedIOException e) {
 			
-			throw new AccessLogException(inputArgsDto.getAccessLog());
-			
-		} catch (IOException e) {
-			
-			throw new AccessLogException(inputArgsDto.getAccessLog());
+			throw new AccessLogException(inputArgs.getAccessLog().orElse(""));
 			
 		}
 		

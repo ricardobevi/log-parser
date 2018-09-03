@@ -71,7 +71,7 @@ public class GnuArgsParser implements ArgsParser {
 	private Options createOptions() {
 		Options options = new Options();
 		
-		options.addOption( Option.builder().longOpt(ACCESS_LOG).argName("path").hasArg().desc("Path to the access.log file").required().build() );
+		options.addOption( Option.builder().longOpt(ACCESS_LOG).argName("path").hasArg().desc("Path to the access.log file").build() );
 		options.addOption( Option.builder().longOpt(START_DATE).argName("date").hasArg().desc("Stating point to meassure in \"yyyy-MM-dd.HH:mm:ss\" format").required().build() );
 		options.addOption( Option.builder().longOpt(DURATION).argName("hourly,daily").hasArg().desc("'hourly' or 'daily'").required().build() );
 		options.addOption( Option.builder().longOpt(THRESHOLD).argName("int").hasArg().desc("Number of request per IP to filter").required().build() );
