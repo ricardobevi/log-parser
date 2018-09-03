@@ -4,8 +4,17 @@ public class AccessLogException extends RuntimeException {
 
 	private static final long serialVersionUID = -937322408883145530L;
 
+	private final String accessLog;
+	
 	public AccessLogException(String accessLog) {
-		// TODO Auto-generated constructor stub
+		this.accessLog = accessLog;
 	}
+
+	@Override
+	public String getMessage() {
+		return "There was a problem accessing the file " + accessLog;
+	}
+	
+	
 
 }
