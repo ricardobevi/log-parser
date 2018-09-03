@@ -40,6 +40,8 @@ public class Parser  {
 		
 		try {
 			
+			System.out.println( "Processing..." );
+			
 			InputArgsDto inputArgsDto = argsParser.parse(args);
 			
 			IpResquestsInput ipRequestsInput = new IpResquestsInput(inputArgsDto, databaseGateway, fileGateway);
