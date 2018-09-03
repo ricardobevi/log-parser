@@ -2,6 +2,6 @@ package com.ef.mapper;
 
 public interface ArgsParser {
 
-	InputArgs parse(String[] args);
+	InputArgsDto parse(String[] args);
 
 }

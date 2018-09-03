@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import com.ef.mapper.exceptions.BadArgumentsException;
 
-public class ArgsMapperTest {
+public class ArgsParserTest {
 
 	@Test
 	public void given_a_list_of_args_it_should_parse_it_to_an_object() {
@@ -19,11 +19,11 @@ public class ArgsMapperTest {
 		
 		ArgsParser gnuArgsParser = new GnuArgsParser();
 		
-		InputArgs inputArgs = gnuArgsParser.parse(args);
+		InputArgsDto inputArgsDto = gnuArgsParser.parse(args);
 		
-		InputArgs expectedInputArgs = new InputArgs("/path/to/file", "2017-01-01.13:00:00", "hourly", "200");
+		InputArgsDto expectedInputArgs = new InputArgsDto("/path/to/file", "2017-01-01.13:00:00", "hourly", "200");
 		
-		Assert.assertEquals(expectedInputArgs, inputArgs);
+		Assert.assertEquals(expectedInputArgs.toString(), inputArgsDto.toString());
 	}
 	
 	@Test
@@ -38,11 +38,11 @@ public class ArgsMapperTest {
 		
 		ArgsParser gnuArgsParser = new GnuArgsParser();
 		
-		InputArgs inputArgs = gnuArgsParser.parse(args);
+		InputArgsDto inputArgsDto = gnuArgsParser.parse(args);
 		
-		InputArgs expectedInputArgs = new InputArgs("/path/to/file", "2017-01-01.13:00:00", "hourly", "200");
+		InputArgsDto expectedInputArgs = new InputArgsDto("/path/to/file", "2017-01-01.13:00:00", "hourly", "200");
 		
-		Assert.assertEquals(expectedInputArgs, inputArgs);
+		Assert.assertEquals(expectedInputArgs.toString(), inputArgsDto.toString());
 	}
 	
 	@Test(expected=BadArgumentsException.class)
