@@ -1,5 +1,7 @@
 package com.ef.usecases;
 
+import java.util.stream.Stream;
+
 import com.ef.entities.LogLine;
 import com.ef.gateways.DatabaseGateway;
 import com.ef.gateways.LogFileProcessor;
@@ -13,10 +15,8 @@ public class LogLinesSaver implements LogFileProcessor {
 	}
 
 	@Override
-	public void process(String logLine) {
-		
-		databaseGateway.saveLog(new LogLine(logLine));
-		
+	public void process(Stream<String> logLinesStream) {
+		databaseGateway.saveLog(logLinesStream.map(logLine -> new LogLine(logLine)));
 	}
 
 }

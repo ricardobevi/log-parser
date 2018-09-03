@@ -2,8 +2,9 @@ package com.ef.mocks;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
-import com.ef.entities.BloquedIps;
+import com.ef.entities.BlockedIps;
 import com.ef.entities.InputArgs;
 import com.ef.entities.LogLine;
 import com.ef.gateways.DatabaseGateway;
@@ -11,13 +12,13 @@ import com.ef.gateways.DatabaseGateway;
 public class DatabaseGatewayMock implements DatabaseGateway {
 	
 	List<LogLine> savedLogLines;
-	BloquedIps bloquedIps;
+	BlockedIps bloquedIps;
 
 	public DatabaseGatewayMock(){
 		savedLogLines = new ArrayList<LogLine>();
 	}
 	
-	public DatabaseGatewayMock(BloquedIps bloquedIps){
+	public DatabaseGatewayMock(BlockedIps bloquedIps){
 		this();
 		this.bloquedIps = bloquedIps;
 	}
@@ -27,15 +28,14 @@ public class DatabaseGatewayMock implements DatabaseGateway {
 	}
 
 	@Override
-	public void saveLog(LogLine logLine) {
-		
-		this.savedLogLines.add(logLine);
-		
+	public BlockedIps findBlockedIps(InputArgs inputArgs) {
+		return bloquedIps;
 	}
 
 	@Override
-	public BloquedIps findBlockedIps(InputArgs inputArgs) {
-		return bloquedIps;
+	public void saveLog(Stream<LogLine> logLineStream) {
+		logLineStream.forEach(logLine -> this.savedLogLines.add(logLine));
 	}
+	
 
 }

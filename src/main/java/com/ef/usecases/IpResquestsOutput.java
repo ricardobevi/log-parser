@@ -1,12 +1,12 @@
 package com.ef.usecases;
 
-import com.ef.entities.BloquedIps;
+import com.ef.entities.BlockedIps;
 
 public class IpResquestsOutput {
 	
-	private final BloquedIps bloquedIps;
+	private final BlockedIps bloquedIps;
 
-	public IpResquestsOutput(BloquedIps bloquedIps) {
+	public IpResquestsOutput(BlockedIps bloquedIps) {
 		this.bloquedIps = bloquedIps;
 	}
 	

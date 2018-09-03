@@ -1,6 +1,6 @@
 package com.ef.usecases;
 
-import com.ef.entities.BloquedIps;
+import com.ef.entities.BlockedIps;
 import com.ef.entities.InputArgs;
 import com.ef.gateways.DatabaseGateway;
 import com.ef.gateways.FileGateway;
@@ -24,7 +24,7 @@ public class IpRequests {
 
 		fileGateway.readLogLines(inputArgsDto, new LogLinesSaver(this.databaseGateway));
 		
-		BloquedIps bloquedIps = this.databaseGateway.findBlockedIps(inputArgs);
+		BlockedIps bloquedIps = this.databaseGateway.findBlockedIps(inputArgs);
 
 		return new IpResquestsOutput(bloquedIps);
 	}

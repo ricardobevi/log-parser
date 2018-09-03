@@ -20,7 +20,7 @@ public class InputArgsTest {
 		Date expectedDate = new SimpleDateFormat("yyyy-MM-dd.HH:mm:ss").parse("2017-01-01.13:00:00");
 		InputArgs expectedInputArgs = new InputArgs("/path/to/file", expectedDate, new Hourly(), 200);
 		
-		Assert.assertEquals(inputArgs, expectedInputArgs);
+		Assert.assertEquals(inputArgs.toString(), expectedInputArgs.toString());
 	} 
 	
 }

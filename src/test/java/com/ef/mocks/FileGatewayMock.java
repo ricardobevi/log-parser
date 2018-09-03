@@ -18,7 +18,7 @@ public class FileGatewayMock implements FileGateway {
 
 	public void readLogLines(InputArgsDto inputArgsDto, LogFileProcessor logFileProcessor) {
 		
-		logLines.parallelStream().forEach(logLine -> logFileProcessor.process(logLine));
+		logFileProcessor.process(logLines.parallelStream());
 		
 	}
 

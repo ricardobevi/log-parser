@@ -1,13 +1,15 @@
 package com.ef.gateways;
 
-import com.ef.entities.BloquedIps;
+import java.util.stream.Stream;
+
+import com.ef.entities.BlockedIps;
 import com.ef.entities.InputArgs;
 import com.ef.entities.LogLine;
 
 public interface DatabaseGateway {
 
-	void saveLog(LogLine logLine);
+	void saveLog(Stream<LogLine> logLineStream);
 
-	BloquedIps findBlockedIps(InputArgs inputArgs);
+	BlockedIps findBlockedIps(InputArgs inputArgs);
 
 }

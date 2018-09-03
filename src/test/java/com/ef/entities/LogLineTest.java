@@ -21,7 +21,7 @@ public class LogLineTest {
 				"swcd (unknown version) CFNetwork/808.2.16 Darwin/15.6.0");
 		
 		
-		Assert.assertEquals(expectedLogLine, logLine);
+		Assert.assertEquals(expectedLogLine.toString(), logLine.toString());
 		
 	}
 	

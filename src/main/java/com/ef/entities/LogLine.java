@@ -7,31 +7,38 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.ef.entities.exceptions.ParsingLogLineException;
+
 public class LogLine {
 
 	private final Date requestDate;
+	
 	private final Ip ip;
+	
 	private final String method;
-	private final int statusCode;
+	private final Integer statusCode;
 	private final String userAgent;
 	
-	
+		
 	public LogLine(String logLine){
 
 		List<String> splittedLogLine = Arrays.asList(logLine.split("\\|")).stream().map(s -> s.replace("\"", "")).collect(Collectors.toList());
 		Date requestDate = new Date();
+		Integer statusCode = 0;
 		
 		try {
+			
 			requestDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").parse(splittedLogLine.get(0));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			statusCode = Integer.parseInt(splittedLogLine.get(3));
+			
+		} catch (ParseException | NumberFormatException e) {
+			throw new ParsingLogLineException(logLine);
 		} 
 
 		this.requestDate = requestDate;
 		this.ip = new Ip(splittedLogLine.get(1));
 		this.method = splittedLogLine.get(2);
-		this.statusCode = Integer.parseInt(splittedLogLine.get(3));
+		this.statusCode = statusCode;
 		this.userAgent = splittedLogLine.get(4);
 	}
 
@@ -44,40 +51,31 @@ public class LogLine {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		LogLine other = (LogLine) obj;
-		if (requestDate == null) {
-			if (other.requestDate != null)
-				return false;
-		} else if (!requestDate.equals(other.requestDate))
-			return false;
-		if (ip == null) {
-			if (other.ip != null)
-				return false;
-		} else if (!ip.equals(other.ip))
-			return false;
-		if (method == null) {
-			if (other.method != null)
-				return false;
-		} else if (!method.equals(other.method))
-			return false;
-		if (statusCode != other.statusCode)
-			return false;
-		if (userAgent == null) {
-			if (other.userAgent != null)
-				return false;
-		} else if (!userAgent.equals(other.userAgent))
-			return false;
-		return true;
+	public String toString() {
+		return "LogLine [requestDate=" + requestDate + ", ip=" + ip + ", method=" + method
+				+ ", statusCode=" + statusCode + ", userAgent=" + userAgent + "]";
+	}
+
+	public Date getRequestDate() {
+		return requestDate;
+	}
+
+	public Ip getIp() {
+		return ip;
+	}
+
+	public String getMethod() {
+		return method;
+	}
+
+	public Integer getStatusCode() {
+		return statusCode;
+	}
+
+	public String getUserAgent() {
+		return userAgent;
 	}
 
 	
 	
-
 }

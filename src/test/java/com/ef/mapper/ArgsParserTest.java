@@ -23,7 +23,7 @@ public class ArgsParserTest {
 		
 		InputArgsDto expectedInputArgs = new InputArgsDto("/path/to/file", "2017-01-01.13:00:00", "hourly", "200");
 		
-		Assert.assertEquals(expectedInputArgs, inputArgsDto);
+		Assert.assertEquals(expectedInputArgs.toString(), inputArgsDto.toString());
 	}
 	
 	@Test
@@ -42,7 +42,7 @@ public class ArgsParserTest {
 		
 		InputArgsDto expectedInputArgs = new InputArgsDto("/path/to/file", "2017-01-01.13:00:00", "hourly", "200");
 		
-		Assert.assertEquals(expectedInputArgs, inputArgsDto);
+		Assert.assertEquals(expectedInputArgs.toString(), inputArgsDto.toString());
 	}
 	
 	@Test(expected=BadArgumentsException.class)

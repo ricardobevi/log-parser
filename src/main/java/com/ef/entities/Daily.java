@@ -7,8 +7,8 @@ public class Daily implements TimePeriod {
 	}
 
 	@Override
-	public boolean equals(TimePeriod other) {
-		return other.inHours() == this.inHours();
+	public String toString() {
+		return "Daily []";
 	}
 
 }

@@ -43,35 +43,9 @@ public class InputArgsDto {
 
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		InputArgsDto other = (InputArgsDto) obj;
-		if (accessLog == null) {
-			if (other.accessLog != null)
-				return false;
-		} else if (!accessLog.equals(other.accessLog))
-			return false;
-		if (duration == null) {
-			if (other.duration != null)
-				return false;
-		} else if (!duration.equals(other.duration))
-			return false;
-		if (startDate == null) {
-			if (other.startDate != null)
-				return false;
-		} else if (!startDate.equals(other.startDate))
-			return false;
-		if (threshold == null) {
-			if (other.threshold != null)
-				return false;
-		} else if (!threshold.equals(other.threshold))
-			return false;
-		return true;
+	public String toString() {
+		return "InputArgsDto [accessLog=" + accessLog + ", startDate=" + startDate + ", duration=" + duration
+				+ ", threshold=" + threshold + "]";
 	}
 
 	

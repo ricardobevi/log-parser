@@ -9,7 +9,7 @@ import java.util.Date;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.ef.entities.BloquedIps;
+import com.ef.entities.BlockedIps;
 import com.ef.entities.Ip;
 import com.ef.entities.LogLine;
 import com.ef.gateways.FileGateway;
@@ -42,7 +42,7 @@ public class IpRequestsTest {
 		
 		
 		
-		Assert.assertEquals(expectedLogLine, databaseGateway.getFirst());
+		Assert.assertEquals(expectedLogLine.toString(), databaseGateway.getFirst().toString());
 		
 	}
 	
@@ -57,7 +57,7 @@ public class IpRequestsTest {
 		Date startDate = new SimpleDateFormat("yyyy-MM-dd.HH:mm:ss").parse("2017-01-01.00:00:00");
 		Date endDate = Date.from(startDate.toInstant().plus(Duration.ofHours(1).minus(Duration.ofSeconds(1))));
 		
-		BloquedIps bloquedIps = new BloquedIps(Arrays.asList(new Ip("192.168.234.82")), 2, startDate, endDate);
+		BlockedIps bloquedIps = new BlockedIps(Arrays.asList(new Ip("192.168.234.82")), 2, startDate, endDate);
 		
 		DatabaseGatewayMock databaseGateway = new DatabaseGatewayMock(bloquedIps);
 						

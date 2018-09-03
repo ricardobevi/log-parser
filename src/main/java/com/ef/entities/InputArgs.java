@@ -2,6 +2,7 @@ package com.ef.entities;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +19,8 @@ public class InputArgs {
 	private final Date startDate;
 	private final TimePeriod timePeriod;
 	private final Integer threshold;
+	
+	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd.HH:mm:ss");
 	
 	private static final Map<String, TimePeriod> timePeriodMapper = new HashMap<String, TimePeriod>(){
 		private static final long serialVersionUID = 5207867956537758499L;
@@ -41,7 +44,7 @@ public class InputArgs {
 		
 		try {
 			
-			startDate = new SimpleDateFormat("yyyy-MM-dd.HH:mm:ss").parse(inputArgsDto.getStartDate());
+			startDate = dateFormat.parse(inputArgsDto.getStartDate());
 			
 		} catch (ParseException e) {
 			throw new InvalidStartDateException(inputArgsDto.getStartDate());
@@ -60,41 +63,39 @@ public class InputArgs {
 			throw new InvalidThresholdException(inputArgsDto.getThreshold());
 		}
 	}
+	
+	
+	
 
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		InputArgs other = (InputArgs) obj;
-		if (accessLog == null) {
-			if (other.accessLog != null)
-				return false;
-		} else if (!accessLog.equals(other.accessLog))
-			return false;
-		if (startDate == null) {
-			if (other.startDate != null)
-				return false;
-		} else if (!startDate.equals(other.startDate))
-			return false;
-		if (threshold == null) {
-			if (other.threshold != null)
-				return false;
-		} else if (!threshold.equals(other.threshold))
-			return false;
-		if (timePeriod == null) {
-			if (other.timePeriod != null)
-				return false;
-		} else if (!timePeriod.equals(other.timePeriod))
-			return false;
-		return true;
+	public String getAccessLog() {
+		return accessLog;
 	}
 
+	public Date getStartDate() {
+		return startDate;
+	}
 
+	public Date getEndDate() {
+		return Date.from(startDate.toInstant().plus(Duration.ofHours(this.timePeriod.inHours()).minus(Duration.ofSeconds(1))));
+	}
+
+	public Integer getThreshold() {
+		return threshold;
+	}
+
+	public String getStartDateString() {
+		return dateFormat.format(getStartDate());
+	}
+
+	public String getEndDateString() {
+		return dateFormat.format(getEndDate());
+	}
+	
+	@Override
+	public String toString() {
+		return "InputArgs [accessLog=" + accessLog + ", startDate=" + startDate + ", timePeriod=" + timePeriod
+				+ ", threshold=" + threshold + "]";
+	}
 	
 	
 }
